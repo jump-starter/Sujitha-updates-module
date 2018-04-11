@@ -21,8 +21,8 @@ const UpdateCommentsSchema = new Schema({
     Comments: [{
       username: String,
       date: Date,
-      body: String
-    }]
+      body: String,
+    }],
 
   }],
   comments: [{

@@ -24,7 +24,6 @@ const updatesCommentsSchema = mongoose.Schema({
       date: Date,
       body: String,
     }],
-
   }],
   comments: [{
     username: String,
@@ -34,3 +33,6 @@ const updatesCommentsSchema = mongoose.Schema({
 });
 
 const UpdatesAndComments = mongoose.model('UpdatesComments', updatesCommentsSchema);
+
+module.exports.db = db;
+module.exports.updatesCommentsSchema = updatesCommentsSchema;

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const mongoDB = 'mongodb://127.0.0.1/data/db';
+const mongoDB = 'mongodb://localhost/UpdatesAndComments';
 mongoose.connect(mongoDB);
 
 mongoose.Promise = global.Promise;
@@ -8,10 +8,11 @@ mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+  console.log('connected to mongo!!!');
+});
 
-const Schema = mongoose.Schema;
-
-const UpdateCommentsSchema = new Schema({
+const updatesCommentsSchema = mongoose.Schema({
   id: Number,
   updates: [{
     title: String,
@@ -32,3 +33,4 @@ const UpdateCommentsSchema = new Schema({
   }],
 });
 
+const UpdatesAndComments = mongoose.model('UpdatesComments', updatesCommentsSchema);

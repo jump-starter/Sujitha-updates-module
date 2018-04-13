@@ -14,6 +14,7 @@ db.once('open', () => {
 
 const updatesCommentsSchema = new mongoose.Schema({
   id: Number,
+  createdAt: Date,
   updates: [{
     title: String,
     body: String,

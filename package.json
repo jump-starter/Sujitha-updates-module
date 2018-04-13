@@ -8,7 +8,9 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "nodemon server/index.js",
+    "dev:react": "webpack -d --watch"
   },
   "dependencies": {
     "body-parser": "^1.17.2",

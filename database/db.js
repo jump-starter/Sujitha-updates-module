@@ -14,6 +14,7 @@ db.once('open', () => {
 
 const updatesCommentsSchema = new mongoose.Schema({
   id: Number,
+  createdAt: Date,
   updates: [{
     title: String,
     body: String,
@@ -38,11 +39,16 @@ const updatesCommentsSchema = new mongoose.Schema({
 
 const UpdatesAndComments = mongoose.model('UpdatesComments', updatesCommentsSchema);
 
-// const loadProject = (projectId, callback) => {
-//   // should find project id and call callback on project returned from DB
-// }
+const loadProject = (projectId, callback) => {
+  // should find project id and call callback on project returned from DB
+  UpdatesAndComments
+    .find({ id: projectId })
+    .exec(callback);
+};
 
+// db method test
+// loadProject(0, (err, res) => {console.log(res)});
 
 module.exports.db = db;
 module.exports.UpdatesAndComments = UpdatesAndComments;
-//module.exports.loadUpdatesAndComments = loadUpdatesAndComments;
+module.exports.loadProject = loadProject;

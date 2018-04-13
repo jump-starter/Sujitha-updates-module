@@ -6,6 +6,7 @@ const projects = [];
 for (let i = 0; i < 100; i++) {
   const project = {};
   project.id = i;
+  project.createdAt = faker.date.past();
   project.updates = [{
     title: faker.random.words(),
     body: faker.lorem.paragraphs(),

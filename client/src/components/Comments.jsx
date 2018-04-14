@@ -1,7 +1,9 @@
 import React from 'react';
 
-const Updates = (props) => (
+const Comments = (props) => (
      <div>
         
     </div>
 )
+
+export default Comments;

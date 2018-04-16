@@ -6,7 +6,7 @@ import $ from 'jquery';
 
 import Updates from './components/Updates.jsx';
 import UpdatePostView from './components/UpdatePostView.jsx';
-import Comments from './components/Comments.jsx';
+import CommentsFeed from './components/CommentsFeed.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -67,6 +67,7 @@ class App extends React.Component {
 
   changeView(option) {
     const updates = this.state.updates
+    console.log("view changed!")
     this.setState({
         view: option,
         clickedUpdate: updates.filter((update) => {
@@ -92,9 +93,9 @@ class App extends React.Component {
   renderView() {
       const { view } = this.state;
       if (view === 'updates') {
-        return <Updates createdAt={this.state.createdAt} updates={this.state.updates} comments={this.state.comments} handleClick={(e)=>this.state.changeView(e)}/>
+        return <Updates createdAt={this.state.createdAt} updates={this.state.updates} comments={this.state.comments} handleClick={(e)=>this.changeView(e)}/>
       } else if (view === 'comments') {
-        return <Comments />
+        return <CommentsFeed comments={this.state.comments}/>
       } else {
         const clickedUpdate = this.state.clickedUpdate[0];
         return <UpdatePostView update={clickedUpdate}/>

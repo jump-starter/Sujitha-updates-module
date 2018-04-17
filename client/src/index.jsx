@@ -14,9 +14,13 @@ class App extends React.Component {
     this.state = {
         view: 'updates',
         createdAt: "3/29/2018",
-        clickedUpdate: null,
+        updateView: {
+            previous: null,
+            current: null,
+            next: null
+        },
         updates: [{
-            title: "first update",
+            title: "2nd update",
             body: "OMG THANKS FOR BACKING OMG",
             date: "4/4/2018", //use moments.js???
             likes: 420,
@@ -28,7 +32,7 @@ class App extends React.Component {
                 body: "u is welcome",
             }]
         }, {
-            title: "2nd update",
+            title: "first update",
             body: "OMG THANKS FOR BACKING OMG!!!!!!!!!!!!!!!!!",
             date: "4/4/2018", //use moments.js???
             likes: 420,
@@ -63,16 +67,35 @@ class App extends React.Component {
     this.changeView = this.changeView.bind(this);
   }
 
-
-
   changeView(option) {
-    const updates = this.state.updates
+    const updates = this.state.updates;
     console.log("view changed!")
+
+    let previous = null;
+    let next = null;
+    let current = null;
+    if (option !== 'updates' && option !== 'comments') { //if an update post is clicked on 
+        //find post by looping over array, starting from oldest posts first 
+        for (var i = updates.length - 1; i >= 0; i--) {
+            if (updates[i].title === option) { // if title matches
+                current = updates[i]; //save clicked on update to state
+                if (updates[i+1]) { //if not the oldest post
+                    previous = updates[i+1].title; //save previous post title
+                }
+                if (i) { //if not the newest
+                    next = updates[i-1].title; //save next post title
+                }
+            }
+        }
+    }
+
     this.setState({
         view: option,
-        clickedUpdate: updates.filter((update) => {
-            return update.title === option;
-        })
+        updateView: {
+            previous: previous,
+            current: current,
+            next: next
+        }
     })
   }
 
@@ -91,14 +114,13 @@ class App extends React.Component {
 //   }
 
   renderView() {
-      const { view } = this.state;
+      const { view, updateView } = this.state;
       if (view === 'updates') {
         return <Updates createdAt={this.state.createdAt} updates={this.state.updates} comments={this.state.comments} handleClick={(e)=>this.changeView(e)}/>
       } else if (view === 'comments') {
         return <CommentsFeed comments={this.state.comments}/>
       } else {
-        const clickedUpdate = this.state.clickedUpdate[0];
-        return <UpdatePostView update={clickedUpdate}/>
+        return <UpdatePostView updateView={updateView} update={updateView.current} handleClick={(e) => this.changeView(e)}/>
       }
   }
 

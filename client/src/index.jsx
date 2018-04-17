@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 
-//use moments.js to handle dates
-
 import Updates from './components/Updates.jsx';
 import UpdatePostView from './components/UpdatePostView.jsx';
 import CommentsFeed from './components/CommentsFeed.jsx';
@@ -13,7 +11,7 @@ class App extends React.Component {
     super();
     this.state = {
         view: 'updates',
-        createdAt: "3/29/2018",
+        createdAt: "2018-02-13 20:03:17.035Z",
         updateView: {
             previous: null,
             current: null,
@@ -33,8 +31,8 @@ class App extends React.Component {
             }]
         }, {
             title: "first update",
-            body: "OMG THANKS FOR BACKING OMG!!!!!!!!!!!!!!!!!",
-            date: "4/4/2018", //use moments.js???
+            body: "OMG THANKS FOR BACKING OMG!!!!!!!!!!!!!!!!! like omg omgomgomgomg alsjdf asdf jalksd flajsd flkasj dflkaj sldjf alksdjf laksjd flkas fla sdfl alsdf alsjdf laksjdf laksjdf laksjd flkasj flkasjd flkasjf lkasjdf lajsdf ioajdflia lifajwliefja lisdjf alksdjf alkf over 30 omg omg omg omgo mgom ",
+            date: "2018-02-13 20:03:17.035Z", //use moments.js???
             likes: 420,
             comments: [{
                 userId: 2,
@@ -46,7 +44,7 @@ class App extends React.Component {
                 userId: 2,
                 avatar: "https://uproxx.files.wordpress.com/2017/02/kevin-durant-mad-yell.jpg?quality=95",
                 userName: "KD",
-                date: "3/30/2018",
+                date: "2018-02-13 20:03:17.035Z",
                 body: "u is welcome",
             }]
         }],
@@ -60,7 +58,7 @@ class App extends React.Component {
             userId: 2,
             avatar: "https://uproxx.files.wordpress.com/2017/02/kevin-durant-mad-yell.jpg?quality=95",
             username: "KD",
-            date: "4/5/2018",
+            date: "2018-02-13 20:03:17.035Z",
             body: "omg",
         }]
     }
@@ -82,7 +80,7 @@ class App extends React.Component {
                 if (updates[i+1]) { //if not the oldest post
                     previous = updates[i+1].title; //save previous post title
                 }
-                if (i) { //if not the newest
+                if (i) { //if not the newest post
                     next = updates[i-1].title; //save next post title
                 }
             }

@@ -84,8 +84,8 @@ describe('updates list view', () => {
 });
 
 describe('project comments feed', () => {
-    it('should limit words to 32 on update list items', () => {
-        const component = mount(<Updates />);
-        expect((component).find(UpdateListItem)).toHaveLength(1);
+    it('should render 2 comments', () => {
+        const component = mount(<CommentsFeed comments={testData.comments} />);
+        expect((component).find(CommentItem)).toHaveLength(1);
     });
 });

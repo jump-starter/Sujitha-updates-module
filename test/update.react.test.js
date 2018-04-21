@@ -1,6 +1,6 @@
 import React from 'react';
 import App from '../client/src/components/App.jsx';
-// import renderer from 'react-test-renderer';
+import renderer from 'react-test-renderer';
 import Updates from '../client/src/components/Updates.jsx';
 import UpdateListItem from '../client/src/components/UpdateListItem.jsx';
 import UpdatePostCommentFeed from '../client/src/components/UpdatePostCommentFeed.jsx';
@@ -76,16 +76,30 @@ describe('default page view', () => {
     
 });
 
-describe('updates list view', () => {
-    it('should limit words to 32 on update list items', () => {
-        const component = mount(<Updates />);
-        expect((component).find(UpdateListItem)).toHaveLength(1);
+describe('changeView method on App.jsx', () => {
+    it('should change to comments view', () => {
+        const wrapper = renderer.create(<App />);
+        const inst = wrapper.getInstance();
+        expect(inst.changeView('comments')).toMatchSnapshot();
+    });
+
+    it('should render updatePostView if anything else is passed in other than updates & comments', () => {
+        const wrapper = renderer.create(<App />);
+        const inst = wrapper.getInstance();
+        expect(inst.changeView('2nd update')).toMatchSnapshot();
     });
 });
 
-describe('project comments feed', () => {
-    it('should render 2 comments', () => {
-        const component = mount(<CommentsFeed comments={testData.comments} />);
-        expect((component).find(CommentItem)).toHaveLength(1);
-    });
-});
+// describe('updates list view', () => {
+//     it('should limit words to 32 on update list items', () => {
+//         const component = mount(<Updates />);
+//         expect((component).find(document.getElementsByClassName(update-body).split(' ').length)).toHaveLength(32);
+//     });
+// });
+
+// describe('project comments feed', () => {
+//     it('should render 2 comments', () => {
+//         const component = mount(<CommentsFeed comments={testData.comments} />);
+//         expect((component).find(CommentItem)).toHaveLength(1);
+//     });
+// });

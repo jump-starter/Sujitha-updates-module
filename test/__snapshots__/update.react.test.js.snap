@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`changeView method on App.jsx should change to comments view 1`] = `undefined`;
+
+exports[`changeView method on App.jsx should render updatePostView if anything else is passed in other than updates & comments 1`] = `undefined`;
+
+exports[`changeView method on App.jsx should set the state to whatever is passed in 1`] = `undefined`;

@@ -94,19 +94,9 @@ class App extends React.Component {
         })
     }
 
-    //   componentWillMount() {
-    //     $.ajax({
-    //         type: 'GET',
-    //         url: '/api/updates', //need ID at the end of the URL req params ID?
-    //         contentType: 'application/JSON',
-    //         success: (data) => {
-    //             this.loadPosts(data);
-    //         },
-    //         error: (err) => {
-    //             console.log('AJAX error', err);
-    //         }
-    //     });
-    //   }
+      componentWillMount() {
+        //axios get request
+      }
 
     renderView() {
         const { view, updateView } = this.state;

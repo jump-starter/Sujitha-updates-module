@@ -43,8 +43,32 @@ for (let i = 0; i < 100; i++) {
       date: faker.date.recent(),
       body: faker.lorem.sentence(),
     }],
+  }, {
+    title: faker.random.words(),
+    body: faker.lorem.paragraphs(),
+    date: faker.date.past(),
+    likes: faker.random.number(),
+    comments: [{
+      userId: faker.random.number(),
+      avatar: faker.image.avatar(),
+      username: faker.internet.userName(),
+      date: faker.date.recent(),
+      body: faker.lorem.sentence(),
+    }, {
+      userId: faker.random.number(),
+      avatar: faker.image.avatar(),
+      username: faker.internet.userName(),
+      date: faker.date.recent(),
+      body: faker.lorem.sentence(),
+    }],
   }];
   project.comments = [{
+    userId: faker.random.number(),
+    avatar: faker.image.avatar(),
+    username: faker.internet.userName(),
+    date: faker.date.recent(),
+    body: faker.random.words(),
+  }, {
     userId: faker.random.number(),
     avatar: faker.image.avatar(),
     username: faker.internet.userName(),

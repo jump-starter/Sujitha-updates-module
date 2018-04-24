@@ -63,6 +63,12 @@
 .update-list-item-left:hover .update-title-color-3 {
   background-color: #759aff; }
 
+#update-feed {
+  height: auto;
+  width: auto;
+  position: relative;
+  text-align: center; }
+
 #update-feed:after {
   content: "";
   position: absolute;
@@ -193,6 +199,6 @@
   .update-post-comment-item .comment-body {
     float: left; }
 
-html {
+#Updates {
   font-size: 17px;
   font-family: "Karla", Helvetica, Arial, sans-serif; }

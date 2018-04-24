@@ -83,7 +83,13 @@ $border: 1px solid rgb(235, 235, 235);
     background-color: rgb(117, 154, 255);
   }
 }
-  
+
+#update-feed {
+  height: auto;
+  width: auto;
+  position:relative;
+  text-align:center
+}
 
 #update-feed:after {
   content: "";

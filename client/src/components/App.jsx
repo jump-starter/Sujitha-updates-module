@@ -16,8 +16,8 @@ class App extends React.Component {
                 current: null,
                 next: null
             },
-            updates: null,
-            comments: null
+            updates: [],
+            comments: []
         }
         this.changeView = this.changeView.bind(this);
     }
@@ -56,9 +56,9 @@ class App extends React.Component {
 
     componentDidMount() {
         const context = this;
-        axios.get('http://127.0.0.1:3004/api/updates/1')
+        axios.get('http://127.0.0.1:3004/api/updates/44')
             .then((response) => {
-                console.log("fuck",response.data[0].createdAt, "you")
+                console.log(response.data[0])
                 context.setState({
                     createdAt: response.data[0].createdAt,
                     updates: response.data[0].updates,

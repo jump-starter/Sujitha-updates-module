@@ -1,63 +1,23 @@
 import React from 'react';
+import axios from 'axios';
 import Updates from './Updates.jsx';
 import UpdatePostView from './UpdatePostView.jsx';
 import CommentsFeed from './CommentsFeed.jsx';
+
 
 class App extends React.Component {
     constructor() {
         super();
         this.state = {
             view: 'updates',
-            createdAt: "2018-02-13 20:03:17.035Z",
+            createdAt: null,
             updateView: {
                 previous: null,
                 current: null,
                 next: null
             },
-            updates: [{
-                title: "2nd update",
-                body: "OMG THANKS FOR BACKING OMG",
-                date: "4/4/2018", 
-                likes: 420,
-                comments: [{
-                    userId: 2,
-                    avatar: "https://uproxx.files.wordpress.com/2017/02/kevin-durant-mad-yell.jpg?quality=95",
-                    username: "KD",
-                    date: "3/30/2018",
-                    body: "u is welcome",
-                }]
-            }, {
-                title: "first update",
-                body: "OMG THANKS FOR BACKING OMG!!!!!!!!!!!!!!!!! like omg omgomgomgomg alsjdf asdf jalksd flajsd flkasj dflkaj sldjf alksdjf laksjd flkas fla sdfl alsdf alsjdf laksjdf laksjdf laksjd flkasj flkasjd flkasjf lkasjdf lajsdf ioajdflia lifajwliefja lisdjf alksdjf alkf over 30 omg omg omg omgo mgom ",
-                date: "2018-02-13 20:03:17.035Z", 
-                likes: 420,
-                comments: [{
-                    userId: 2,
-                    avatar: "https://uproxx.files.wordpress.com/2017/02/kevin-durant-mad-yell.jpg?quality=95",
-                    username: "KD",
-                    date: "4/4/2018",
-                    body: "your welcome",
-                }, {
-                    userId: 2,
-                    avatar: "https://uproxx.files.wordpress.com/2017/02/kevin-durant-mad-yell.jpg?quality=95",
-                    username: "KD",
-                    date: "2018-02-13 20:03:17.035Z",
-                    body: "u is welcome",
-                }]
-            }],
-            comments: [{
-                userId: 2,
-                avatar: "https://uproxx.files.wordpress.com/2017/02/kevin-durant-mad-yell.jpg?quality=95",
-                username: "KD",
-                date: "4/4/2018",
-                body: "i love this",
-            }, {
-                userId: 2,
-                avatar: "https://uproxx.files.wordpress.com/2017/02/kevin-durant-mad-yell.jpg?quality=95",
-                username: "KD",
-                date: "2018-02-13 20:03:17.035Z",
-                body: "omg",
-            }]
+            updates: null,
+            comments: null
         }
         this.changeView = this.changeView.bind(this);
     }
@@ -94,19 +54,21 @@ class App extends React.Component {
         })
     }
 
-    //   componentWillMount() {
-    //     $.ajax({
-    //         type: 'GET',
-    //         url: '/api/updates', //need ID at the end of the URL req params ID?
-    //         contentType: 'application/JSON',
-    //         success: (data) => {
-    //             this.loadPosts(data);
-    //         },
-    //         error: (err) => {
-    //             console.log('AJAX error', err);
-    //         }
-    //     });
-    //   }
+    componentDidMount() {
+        const context = this;
+        axios.get('http://127.0.0.1:3004/api/updates/1')
+            .then((response) => {
+                console.log("fuck",response.data[0].createdAt, "you")
+                context.setState({
+                    createdAt: response.data[0].createdAt,
+                    updates: response.data[0].updates,
+                    comments: response.data[0].comments
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
 
     renderView() {
         const { view, updateView } = this.state;

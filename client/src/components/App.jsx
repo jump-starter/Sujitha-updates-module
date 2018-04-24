@@ -22,7 +22,7 @@ class App extends React.Component {
                 comments: [{
                     userId: 2,
                     avatar: "https://uproxx.files.wordpress.com/2017/02/kevin-durant-mad-yell.jpg?quality=95",
-                    userName: "KD",
+                    username: "KD",
                     date: "3/30/2018",
                     body: "u is welcome",
                 }]
@@ -34,13 +34,13 @@ class App extends React.Component {
                 comments: [{
                     userId: 2,
                     avatar: "https://uproxx.files.wordpress.com/2017/02/kevin-durant-mad-yell.jpg?quality=95",
-                    userName: "KD",
+                    username: "KD",
                     date: "4/4/2018",
                     body: "your welcome",
                 }, {
                     userId: 2,
                     avatar: "https://uproxx.files.wordpress.com/2017/02/kevin-durant-mad-yell.jpg?quality=95",
-                    userName: "KD",
+                    username: "KD",
                     date: "2018-02-13 20:03:17.035Z",
                     body: "u is welcome",
                 }]

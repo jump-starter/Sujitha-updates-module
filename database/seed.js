@@ -15,13 +15,13 @@ for (let i = 0; i < 100; i++) {
     comments: [{
       userId: faker.random.number(),
       avatar: faker.image.avatar(),
-      userName: faker.internet.userName(),
+      username: faker.internet.userName(),
       date: faker.date.recent(),
       body: faker.lorem.sentence(),
     }, {
       userId: faker.random.number(),
       avatar: faker.image.avatar(),
-      userName: faker.internet.userName(),
+      username: faker.internet.userName(),
       date: faker.date.recent(),
       body: faker.lorem.sentence(),
     }],
@@ -33,13 +33,13 @@ for (let i = 0; i < 100; i++) {
     comments: [{
       userId: faker.random.number(),
       avatar: faker.image.avatar(),
-      userName: faker.internet.userName(),
+      username: faker.internet.userName(),
       date: faker.date.recent(),
       body: faker.lorem.sentence(),
     }, {
       userId: faker.random.number(),
       avatar: faker.image.avatar(),
-      userName: faker.internet.userName(),
+      username: faker.internet.userName(),
       date: faker.date.recent(),
       body: faker.lorem.sentence(),
     }],
@@ -47,13 +47,13 @@ for (let i = 0; i < 100; i++) {
   project.comments = [{
     userId: faker.random.number(),
     avatar: faker.image.avatar(),
-    userName: faker.internet.userName(),
+    username: faker.internet.userName(),
     date: faker.date.recent(),
     body: faker.random.words(),
   }, {
     userId: faker.random.number(),
     avatar: faker.image.avatar(),
-    userName: faker.internet.userName(),
+    username: faker.internet.userName(),
     date: faker.date.recent(),
     body: faker.random.words(),
   }];

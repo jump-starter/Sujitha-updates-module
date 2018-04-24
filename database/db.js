@@ -23,7 +23,7 @@ const updatesCommentsSchema = new mongoose.Schema({
     comments: [{
       userId: Number,
       avatar: String,
-      userName: String,
+      username: String,
       date: Date,
       body: String,
     }],

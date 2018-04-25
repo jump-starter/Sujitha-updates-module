@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>2/8</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
-        <span class="quiet">Branches</span>
-        <span class='fraction'>0/8</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">20% </span>
-        <span class="quiet">Functions</span>
-        <span class='fraction'>1/5</span>
+        <span class='fraction'>4/8</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">50% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>4/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">60% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>3/5</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>2/4</span>
+        <span class='fraction'>4/4</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -86,8 +86,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -105,14 +105,14 @@ const UpdatePostView = (props) =&gt; (
         &lt;h5 className="update-post-date"&gt;{moment(props.update.date).format('MMMM D, YYYY')}&lt;/h5&gt;
         &lt;h2 className="update-post-title"&gt;{props.update.title}&lt;/h2&gt;
         &lt;div className="comments-like-bar"&gt;
-            &lt;span className="update-post-comments"&gt;{props.update.comments.length === 1 ? props.update.comments.length + ' Comment ' : props.update.comments.length + ' Comments '}&lt;/span&gt;
+            &lt;span className="update-post-comments"&gt;{props.update.comments.length === 1 ? <span class="branch-0 cbranch-no" title="branch not covered" >props.update.comments.length + ' Comment ' </span>: props.update.comments.length + ' Comments '}&lt;/span&gt;
             &lt;button className="like-button" type="button"&gt;&lt;span className="heart"&gt;♥&lt;/span&gt; Like&lt;/button&gt;
-            &lt;span className="update-post-likes"&gt; {props.update.likes === 1 ? props.update.likes + ' Like' : props.update.likes + ' Likes'}&lt;/span&gt;
+            &lt;span className="update-post-likes"&gt; {props.update.likes === 1 ? <span class="branch-0 cbranch-no" title="branch not covered" >props.update.likes + ' Like' </span>: props.update.likes + ' Likes'}&lt;/span&gt;
         &lt;/div&gt;
         &lt;p className="update-post-body"&gt;{props.update.body}&lt;/p&gt;
         &lt;div className="previous-next-update-bar"&gt;
-            {(<span class="fstat-no" title="function not covered" >()</span> =&gt; {<span class="cstat-no" title="statement not covered" >if (props.updateView.previous) <span class="cstat-no" title="statement not covered" >return &lt;button id="previous" onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >props.handleClick(props.updateView.previous)}</span>&gt;&amp;lt; Previous Update&lt;/button&gt;}</span></span>)()} 
-            {(<span class="fstat-no" title="function not covered" >()</span> =&gt; {<span class="cstat-no" title="statement not covered" >if (props.updateView.next) <span class="cstat-no" title="statement not covered" >return &lt;button id="next" onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >props.handleClick(props.updateView.next)}</span>&gt;Next Update &amp;gt;&lt;/button&gt;}</span></span>)()}
+            {(() =&gt; {<span class="missing-if-branch" title="if path not taken" >I</span>if (props.updateView.previous) <span class="cstat-no" title="statement not covered" >return &lt;button id="previous" onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >props.handleClick(props.updateView.previous)}</span>&gt;&amp;lt; Previous Update&lt;/button&gt;}</span>)()} 
+            {(() =&gt; {<span class="missing-if-branch" title="if path not taken" >I</span>if (props.updateView.next) <span class="cstat-no" title="statement not covered" >return &lt;button id="next" onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >props.handleClick(props.updateView.next)}</span>&gt;Next Update &amp;gt;&lt;/button&gt;}</span>)()}
         &lt;/div&gt;
         &lt;div className="bottom-like-bar border"&gt;
             &lt;button className="like-button bottom-like" type="button"&gt;&lt;span className="heart"&gt;♥&lt;/span&gt; Like&lt;/button&gt;
@@ -127,7 +127,7 @@ export default UpdatePostView;</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Apr 24 2018 15:18:12 GMT-0700 (PDT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Apr 24 2018 18:40:33 GMT-0700 (PDT)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">5.56% </span>
+        <span class="strong">61.11% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>1/18</span>
+        <span class='fraction'>11/18</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">61.11% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/18</span>
+        <span class='fraction'>11/18</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/5</span>
+        <span class='fraction'>4/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">7.14% </span>
+        <span class="strong">71.43% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>1/14</span>
+        <span class='fraction'>10/14</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -86,30 +86,30 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -121,31 +121,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
 import moment from 'moment';
 &nbsp;
-const UpdateListItem = <span class="fstat-no" title="function not covered" >(p</span>rops) =&gt; (
-<span class="cstat-no" title="statement not covered" >    &lt;div className="update-list-item"&gt;</span>
+const UpdateListItem = (props) =&gt; (
+    &lt;div className="update-list-item"&gt;
         &lt;div className={props.render ? "update-date-right" : "update-date-left"}&gt;&lt;/div&gt;
         &lt;div className={props.render ? "update-list-item-right" : "update-list-item-left"} onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >props.handleClick(props.update.title)}</span>&gt;
             &lt;h5 className="update-date"&gt;{moment(props.update.date).format('MMMM D')}&lt;/h5&gt;
-            &lt;h3 className="update-title"&gt;&lt;span className={(<span class="fstat-no" title="function not covered" >()</span>=&gt;{
-<span class="cstat-no" title="statement not covered" >                if (props.color === 1) {</span>
-<span class="cstat-no" title="statement not covered" >                    return "update-title-color-1"</span>
-                } else <span class="cstat-no" title="statement not covered" >if (props.color === 2) {</span>
+            &lt;h3 className="update-title"&gt;&lt;span className={(()=&gt;{
+                if (props.color === 1) {
+                    return "update-title-color-1"
+                } else <span class="missing-if-branch" title="if path not taken" >I</span>if (props.color === 2) {
 <span class="cstat-no" title="statement not covered" >                    return "update-title-color-2"</span>
                 } else {
-<span class="cstat-no" title="statement not covered" >                    return "update-title-color-3"</span>
+                    return "update-title-color-3"
                 }
             })()}&gt;{props.update.title}&lt;/span&gt;&lt;/h3&gt;
             &lt;p className="update-body"&gt;{props.update.body.split(' ').length &gt; 30 ? //only render first 30 words 
-                props.update.body.split(' ').slice(0, 30).join(' ') : props.update.body}... &lt;span className="read-more"&gt;Read more&lt;/span&gt;&lt;/p&gt;
+                props.update.body.split(' ').slice(0, 30).join(' ') : <span class="branch-1 cbranch-no" title="branch not covered" >props.update.body}</span>... &lt;span className="read-more"&gt;Read more&lt;/span&gt;&lt;/p&gt;
             &lt;div className="likes-comments"&gt;
-                &lt;span className="update-comments"&gt;{(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >                    if (props.update.comments.length &gt; 1) { <span class="cstat-no" title="statement not covered" >return props.update.comments.length + ' Comments' </span>}</span>
-                    else <span class="cstat-no" title="statement not covered" >if (props.update.comments.length === 1) { <span class="cstat-no" title="statement not covered" >return props.update.comments.length + ' Comment' </span>}</span>
-                    else { <span class="cstat-no" title="statement not covered" >return </span>}
+                &lt;span className="update-comments"&gt;{(() =&gt; {
+                    <span class="missing-if-branch" title="if path not taken" >I</span>if (props.update.comments.length &gt; 1) { <span class="cstat-no" title="statement not covered" >return props.update.comments.length + ' Comments' </span>}
+                    else <span class="missing-if-branch" title="if path not taken" >I</span>if (props.update.comments.length === 1) { <span class="cstat-no" title="statement not covered" >return props.update.comments.length + ' Comment' </span>}
+                    else { return }
                 })()} &lt;/span&gt;
                 &lt;span&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;
-                &lt;span className="update-likes"&gt; {(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >                    if (props.update.likes &gt; 1) { <span class="cstat-no" title="statement not covered" >return props.update.likes + ' Likes' </span>}</span>
+                &lt;span className="update-likes"&gt; {(() =&gt; {
+                    <span class="missing-if-branch" title="else path not taken" >E</span>if (props.update.likes &gt; 1) { return props.update.likes + ' Likes' }
                     else <span class="cstat-no" title="statement not covered" >if (props.update.likes === 1) { <span class="cstat-no" title="statement not covered" >return props.update.likes + ' Like' </span>}</span>
                     else { <span class="cstat-no" title="statement not covered" >return </span>}
                 })()} &lt;/span&gt;
@@ -160,7 +160,7 @@ export default UpdateListItem;</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Apr 24 2018 15:18:12 GMT-0700 (PDT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Apr 24 2018 18:40:33 GMT-0700 (PDT)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

@@ -2,5 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App.jsx';
 
-ReactDOM.render(<App />, document.getElementById('Updates'));
+window.React = React;
+window.ReactDOM = ReactDOM;
+window.Updates = App; 
+
+//ReactDOM.render(<App projectId={2}/>, document.getElementById('Updates'));
 

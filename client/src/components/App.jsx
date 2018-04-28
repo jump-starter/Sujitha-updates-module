@@ -6,9 +6,10 @@ import CommentsFeed from './CommentsFeed.jsx';
 
 
 class App extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
+            projectId: props.projectId || 2,
             view: 'updates',
             createdAt: null,
             updateView: {
@@ -56,9 +57,10 @@ class App extends React.Component {
 
     componentDidMount() {
         const context = this;
-        axios.get('http://ec2-18-216-228-30.us-east-2.compute.amazonaws.com/api/updates/33')
+        //axios.get(`http://ec2-18-216-228-30.us-east-2.compute.amazonaws.com/api/updates/${context.projectId}`)
+        axios.get(`http://127.0.0.1:3004/api/updates/${context.state.projectId}`)
             .then((response) => {
-                console.log(response.data[0])
+                console.log("client", response.data)
                 context.setState({
                     createdAt: response.data[0].createdAt,
                     updates: response.data[0].updates,

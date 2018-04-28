@@ -10,6 +10,14 @@
 <body>
     <div id="Updates"></div>
     <script type="text/javascript" src="bundle.js"></script>
+    <script>
+        const project = window.location.href.split('?')[1];
+        ReactDOM.render(
+            React.createElement(Updates, {projectId: project}),
+            document.getElementById('Updates')
+        );
+    </script>
+    
 </body>
 
 </html>

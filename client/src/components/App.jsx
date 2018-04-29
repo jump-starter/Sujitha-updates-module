@@ -84,10 +84,10 @@ class App extends React.Component {
     render() {
         return (
             <div className="app">
-                {/* <div className="nav">
+                <div className="nav">
                     <span className="updates" onClick={() => this.changeView('updates')}>Updates </span>
                     <span className="comments" onClick={() => this.changeView('comments')}> Comments</span>
-                </div> */}
+                </div>
                 <div className="updates-main">
                     {this.renderView()}
                 </div>

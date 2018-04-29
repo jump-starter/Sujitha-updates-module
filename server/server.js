@@ -9,7 +9,7 @@ bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
 
 const app = express();
-const client = redis.createClient(6379, 'localhost')
+const client = redis.createClient(6379, '172.17.0.3');
 const port = 3004;
 
 app.use(cors());
@@ -18,12 +18,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 
 app.get('/api/updates/:id', (req, res) => {
-  console.log('get request happening ');
   client.getAsync(req.params.id)
     .then((project) => {
       if (project !== null) {
         res.status(200);
-        console.log("redis", project);
         res.send(project);
       } else {
         db.loadProject(req.params.id, (err, projects) => {

@@ -1,213 +1,122 @@
 const faker = require('faker');
-const db = require('./db.js');
+const fs = require('fs');
+// const db = require('./db.js');
+// const projects = [];
+const mongoose = require('mongoose');
 
-const projects = [];
+const mongoDB = 'mongodb://localhost/UpdatesAndComments';
+// const mongoDB = 'mongodb://172.17.0.2/UpdatesAndComments';
+mongoose.connect(mongoDB);
 
-for (let i = 1; i <= 100; i++) {
-  const project = {};
-  project.id = i;
-  project.createdAt = faker.date.past();
-  project.updates = [{
-    title: faker.random.words(),
-    body: faker.lorem.paragraphs(),
-    date: faker.date.past(),
-    likes: faker.random.number(),
-    comments: [{
-      userId: faker.random.number(),
-      avatar: faker.image.avatar(),
-      username: faker.internet.userName(),
-      date: faker.date.recent(),
-      body: faker.lorem.sentence(),
-    }, {
-      userId: faker.random.number(),
-      avatar: faker.image.avatar(),
-      username: faker.internet.userName(),
-      date: faker.date.recent(),
-      body: faker.lorem.sentence(),
+mongoose.Promise = global.Promise;
+
+const db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+  console.log('connected to mongo!!!');
+});
+
+
+const UpdateCommentSchema = new mongoose.Schema({
+    id: Number,
+    createdAt: Date,
+    updates: [{
+      title: String,
+      body: String,
+      date: Date,
+      likes: Number,
+      comments: [{
+        userId: Number,
+        avatar: String,
+        username: String,
+        date: Date,
+        body: String,
+      }],
     }],
-  }, {
-    title: faker.random.words(),
-    body: faker.lorem.paragraphs(),
-    date: faker.date.past(),
-    likes: faker.random.number(),
     comments: [{
-      userId: faker.random.number(),
-      avatar: faker.image.avatar(),
-      username: faker.internet.userName(),
-      date: faker.date.recent(),
-      body: faker.lorem.sentence(),
-    }, {
-      userId: faker.random.number(),
-      avatar: faker.image.avatar(),
-      username: faker.internet.userName(),
-      date: faker.date.recent(),
-      body: faker.lorem.sentence(),
+      userId: Number,
+      avatar: String,
+      username: String,
+      date: Date,
+      body: String,
     }],
-  }, {
-    title: faker.random.words(),
-    body: faker.lorem.paragraphs(),
-    date: faker.date.past(),
-    likes: faker.random.number(),
-    comments: [{
-      userId: faker.random.number(),
-      avatar: faker.image.avatar(),
-      username: faker.internet.userName(),
-      date: faker.date.recent(),
-      body: faker.lorem.sentence(),
-    }, {
-      userId: faker.random.number(),
-      avatar: faker.image.avatar(),
-      username: faker.internet.userName(),
-      date: faker.date.recent(),
-      body: faker.lorem.sentence(),
-    }],
-  }];
-  project.comments = [{
-    userId: faker.random.number(),
-    avatar: faker.image.avatar(),
-    username: faker.internet.userName(),
-    date: faker.date.recent(),
-    body: faker.random.words(),
-  }, {
-    userId: faker.random.number(),
-    avatar: faker.image.avatar(),
-    username: faker.internet.userName(),
-    date: faker.date.recent(),
-    body: faker.random.words(),
-  }, {
-    userId: faker.random.number(),
-    avatar: faker.image.avatar(),
-    username: faker.internet.userName(),
-    date: faker.date.recent(),
-    body: faker.random.words(),
-  }];
-  projects.push(project);
+  });
+  
+  const UpdateComment = mongoose.model('UpdatesComments', UpdateCommentSchema);
+  
+var generateRandomUpdates = function() {
+    return Math.floor(Math.random() * 4);
 }
 
-var defaultData = {
-  id: 0,
-  createdAt: "2018-04-10T13:16:31.413Z",
-  updates: [{
-    title: "Peep These Updates Though",
-    body: "Amazing work fellas! Shoutout to the NotAirBnB team for making such a sick website",
-    date: "2018-04-20T13:16:31.413Z",
-    likes: 210,
-    comments: [{
-      userId: 10,
-      avatar: "https://avatars0.githubusercontent.com/u/28763918?s=460&v=4",
-      username: "cam",
-      date: "2018-04-24T13:16:31.413Z",
-      body: "amazing stuff man nice job!!",
-    }, {
-      userId: 100,
-      avatar: "https://avatars3.githubusercontent.com/u/24502574?s=400&v=4",
-      username: "ryan",
-      date: "2018-04-21T13:16:31.413Z",
-      body: "cool story br000000",
-    }, {
-      userId: 420,
-      avatar: "https://avatars3.githubusercontent.com/u/31649275?s=460&v=4",
-      username: "sam",
-      date: "2018-04-20T13:16:31.413Z",
-      body: "your component is wack",
-    }]
-  }, {
-    title: "Product Summary!!!",
-    body: "I am just so excited that product summary component is all finished. Gotta shoutout my boy mike for just being such a cool dude.",
-    date: "2018-04-18T13:16:31.413Z",
-    likes: 17,
-    comments: [{
-      userId: 420,
-      avatar: "https://avatars3.githubusercontent.com/u/31649275?s=460&v=4",
-      username: "sam",
-      date: "2018-04-11T13:16:31.413Z",
-      body: "wow so sick man",
-    }, {
-      userId: 100,
-      avatar: "https://avatars3.githubusercontent.com/u/24502574?s=400&v=4",
-      username: "ryan",
-      date: "2018-04-13T13:16:31.413Z",
-      body: "cool story bro",
-    }, {
-      userId: 1,
-      avatar: "https://avatars1.githubusercontent.com/u/30758373?s=460&v=4",
-      username: "mic",
-      date: "2018-04-18T13:16:31.413Z",
-      body: "nice job! looks good",
-    }]
-  }, {
-    title: "WOW the Navbar is Finished",
-    body: "yo the navbar is finished and it looks niiiiiiiiiceeeee. u see that line moving tho when u click stuff???? yeeee.",
-    date: "2018-04-13T13:16:31.413Z",
-    likes: 9,
-    comments: [{
-      userId: 10,
-      avatar: "https://avatars0.githubusercontent.com/u/28763918?s=460&v=4",
-      username: "cam",
-      date: "2018-04-16T13:16:31.413Z",
-      body: "lookin good!!",
-    }, {
-      userId: 1,
-      avatar: "https://avatars1.githubusercontent.com/u/30758373?s=460&v=4",
-      username: "mic",
-      date: "2018-04-14T13:16:31.413Z",
-      body: "back this project should be animated when u scroll tho",
-    }, {
-      userId: 100,
-      avatar: "https://avatars3.githubusercontent.com/u/24502574?s=400&v=4",
-      username: "ryan",
-      date: "2018-04-13T13:16:31.413Z",
-      body: "omg sam your so cool",
-    }]
-  }, {
-    title: "omg just finished campaign module",
-    body: "wow im so awesome i finished the campaign module. took me like forever but its cool. shoutout to mike hes awesome.",
-    date: "2018-04-11T13:16:31.413Z",
-    likes: 7,
-    comments: [{
-      userId: 1,
-      avatar: "https://avatars1.githubusercontent.com/u/30758373?s=460&v=4",
-      username: "mic",
-      date: "2018-04-13T13:16:31.413Z",
-      body: "appreciate the shoutout bro",
-    }, {
-      userId: 10,
-      avatar: "https://avatars0.githubusercontent.com/u/28763918?s=460&v=4",
-      username: "cam",
-      date: "2018-04-12T13:16:31.413Z",
-      body: "nice work!",
-    }, {
-      userId: 420,
-      avatar: "https://avatars3.githubusercontent.com/u/31649275?s=460&v=4",
-      username: "sam",
-      date: "2018-04-11T13:16:31.413Z",
-      body: "wow so cooooooool",
-    }]
-  }],
-  comments: []
+var generateRandomForCommentsUpdates = function() {
+    return Math.floor(Math.random() * 3);
 }
 
-
-var commentsArray = [];
-//faker to create fake comments (51 comments)
-for (var i = 0; i < 51; i++) {
-  var fakeComment = {
-    userId: faker.random.number(),
-    avatar: faker.image.avatar(),
-    username: faker.internet.userName(),
-    date: faker.date.recent(),
-    body: faker.random.words(),
-  }
-  commentsArray.push(fakeComment);
+var generateRandomComments = function() {
+    return Math.floor(Math.random() * 21);
 }
 
-defaultData.comments = commentsArray;
-
-projects.unshift(defaultData);
-
-const insertProjects = () => {
-  db.UpdatesAndComments.create(projects);
-};
-
-insertProjects();
-
+var generateRandomProjectId = function () {
+    return Math.floor(Math.random() * 101);
+}
+var generateComments = function () {
+    var commentsArray = [];
+    var randomCount = generateRandomComments();
+    for (var i = 0; i < randomCount; i++) {
+        commentsArray.push({
+            userId: faker.random.number(),
+            avatar: faker.image.avatar(),
+            username: faker.internet.userName(),
+            date: faker.date.recent(),
+            body: faker.lorem.sentence(),
+        })
+    }
+    return commentsArray;
+}
+var generateUpdates = function () {
+    var updatesArray = [];
+    var randomCount = generateRandomUpdates();
+    for (var i = 0; i < randomCount; i++) {
+        updatesArray.push({
+            title: faker.random.words(),
+            body: faker.lorem.paragraphs(),
+            date: faker.date.past(),
+            likes: faker.random.number(),
+            comments: generateCommentsForUpdates(),
+        })
+    }
+    return updatesArray;
+}
+var generateCommentsForUpdates = function () {
+    var commentsForUpdatesArray = [];
+    var randomCount = generateRandomForCommentsUpdates();
+    for (var i = 0; i < randomCount; i++) {
+        commentsForUpdatesArray.push({
+            userId: faker.random.number(),
+            avatar: faker.image.avatar(),
+            username: faker.internet.userName(),
+            date: faker.date.recent(),
+            body: faker.lorem.sentence(),
+        })
+    }
+    return commentsForUpdatesArray;
+}
+var createData = function(start, end, filename) {
+    let data = '';
+    for (let i = start; i <= end; i++) {
+        const updatecomment = {
+            id : i,
+            createdAt : faker.date.past(),
+            updates : generateUpdates(),
+            comments : generateComments()
+        }   
+        data += JSON.stringify(updatecomment) + '\n';
+        if (i % 10 === 0) {
+            fs.appendFileSync(filename, data);
+            data = '';
+        }
+    }
+    console.log('done')
+}
+module.exports.createData = createData;

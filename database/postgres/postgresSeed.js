@@ -13,7 +13,7 @@ const createDataProject = function(start, end, file) {
     }
 }
 //createDataProject(0, 10000001, './data1.txt');
-createDataProject(0, 1, './text1.txt');
+//createDataProject(0, 1, './text1.txt');
 
 
 const createDataUpdate = function(start, end, file) {  
@@ -33,7 +33,7 @@ ${j}`;
     }
 }
 //createDataUpdate(0, 20000001, './data2.txt');
-createDataUpdate(0, 2, './text2.txt');
+//createDataUpdate(0, 2, './text2.txt');
 
 const createDataComment = function(start, end, file) {
     var insertArr = [];
@@ -47,8 +47,8 @@ ${faker.internet.userName()}`;
         }
     }
 }
-//createDataComment(0, 60000001, './data3.txt');
-createDataComment(0, 6, './text3.txt');
+createDataComment(0, 60000001, './data3.txt');
+//createDataComment(0, 6, './text3.txt');
 
 const createDataCommentProject = function(start, end, file) {
      var insertArr = [];
@@ -65,8 +65,8 @@ const createDataCommentProject = function(start, end, file) {
         }
     }
 }
-//createDataCommentProject(0, 20000001, './data3.txt');
-createDataCommentProject(0, 2, './text4.txt');
+//createDataCommentProject(0, 20000001, './data4.txt');
+//createDataCommentProject(0, 2, './text4.txt');
 
 const createDataCommentUpdate = function(start, end, file) {
     var insertArr = [];
@@ -86,4 +86,4 @@ const createDataCommentUpdate = function(start, end, file) {
     }
 }
 //createDataCommentUpdate(0, 40000001, './data5.txt');
-createDataCommentUpdate(0, 4, './text5.txt');
+//createDataCommentUpdate(0, 4, './text5.txt');

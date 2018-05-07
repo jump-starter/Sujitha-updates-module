@@ -36,11 +36,11 @@ const UpdateCommentSchema = new mongoose.Schema({
   }],
 });
 
-const Updatecomment = mongoose.model('Updatecomment', UpdateCommentSchema);
+const UpdateComment = mongoose.model('UpdateComment', UpdateCommentSchema);
 
 const loadProject = (projectId, callback) => {
   console.log('inside db load-', projectId)
-  Updatecomment.find({id: projectId }, function(err, result) {
+  UpdateComment.find({id: projectId }, function(err, result) {
       if (err) {
         console.log('errr in if-', err)
         callback(err, null);

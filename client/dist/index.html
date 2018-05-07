@@ -8,15 +8,16 @@
 </head>
 
 <body>
-    <div id="Updates"></div>
-    <script type="text/javascript" src="bundle.js"></script>
+    <div id="app"></div>
+    <script type="text/javascript" src="./bundle.js"></script>
     <script>
-        const project = window.location.href.split('?')[1];
+        //let locationId = (window.location.pathname.split('/rooms/')[1]).split('/')[0];
+        const project = window.location.href.split('/project/')[1].split('/')[0];
+        // console.log('inside html-', project)
         ReactDOM.render(
-            React.createElement(Updates, {projectId: project}),
-            document.getElementById('Updates')
+            React.createElement(App, {projectId: project}),
+            document.getElementById('app')
         );
     </script>
 </body>
-
 </html>

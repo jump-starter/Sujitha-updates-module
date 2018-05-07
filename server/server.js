@@ -1,3 +1,4 @@
+const nr = require('newrelic');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -15,7 +16,7 @@ const port = 3004;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '/../client/dist')));
+app.use('/project/:projectid', express.static(path.join(__dirname, '/../client/dist')));
 
 app.get('/api/updates/:id', (req, res) => {
   // client.getAsync(req.params.id)
@@ -24,12 +25,13 @@ app.get('/api/updates/:id', (req, res) => {
   //       res.status(200);
   //       res.send(project);
   //     } else {
+    console.log('req params ins erver -', req.params)
         db.loadProject(req.params.id, (err, projects) => {
           if (err) {
             console.log('ERROR LOADING PROJECT', err);
           } else {            
             const proj = JSON.stringify(projects);
-            console.log('proj inside server-', projects)
+            // console.log('proj inside server-', projects)
             res.send(projects);
             // client.set(req.params.id, proj);
           }

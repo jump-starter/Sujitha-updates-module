@@ -4,5 +4,5 @@ import App from './components/App.jsx';
 
 window.React = React;
 window.ReactDOM = ReactDOM;
-window.Updates = App; 
+window.App = App; 
 

@@ -16,7 +16,7 @@ const Updates = (props) => (
             }
             //dynamically render updates
             return props.updates.map((update, i) => {
-                changeColor()
+                changeColor();
                 return (<UpdateListItem update={update} key={"u" + i} 
                     handleClick={props.handleClick} render={i % 2 === 0} color={currentColor}/>)})
         })()}

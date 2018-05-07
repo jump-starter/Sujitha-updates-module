@@ -29,7 +29,7 @@ app.get('/api/updates/:id', (req, res) => {
             console.log('ERROR LOADING PROJECT', err);
           } else {            
             const proj = JSON.stringify(projects);
-            console.log('proj inside loadProject-', projects)
+            console.log('proj inside server-', projects)
             res.send(projects);
             // client.set(req.params.id, proj);
           }

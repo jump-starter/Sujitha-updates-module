@@ -47,6 +47,7 @@
     "enzyme-to-json": "^3.3.3",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "jest": "^22.4.3",
+    "loadtest": "^ 3.0.3",
     "node-sass": "^4.8.3",
     "react-test-renderer": "^16.3.2",
     "webpack": "^2.2.1"

@@ -19,6 +19,19 @@ module.exports = {
           presets: ['react', 'es2015'],
         },
       },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader',
+        // {
+        //   loader: 'css-loader',
+        //   options: {
+        //     sourceMap: true,
+        //     modules: true,
+        //     localIdentName: '[local]___[hash:base64:5]',
+        //   },
+        // },
+        
+        },
     ],
   },
   // externals: {

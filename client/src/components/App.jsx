@@ -58,13 +58,13 @@ class App extends React.Component {
         const context = this;
         //axios.get(`http://127.0.0.1:3004/api/updates/${context.state.projectId}`)
         
-        const url = (process.env.NODE_ENV === 'production') ? 
-        'http://ec2-18-216-228-30.us-east-2.compute.amazonaws.com': 'http://localhost:3004';
+        const url = 'http://ec2-34-207-242-26.compute-1.amazonaws.com';
+        // const url = 'http://127.0.0.1:3004';
         console.log('url-', url);
 
         axios.get(`${url}/api/updates/${context.state.projectId}`)
             .then((response) => {
-                console.log('res-', response);
+                console.log('response data in client App.jsx-', response.data);
                 context.setState({
                     createdAt: response.data[0].createdAt,
                     updates: response.data[0].updates,

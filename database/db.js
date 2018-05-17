@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
 
-const mongoDB = 'mongodb://localhost/updatecomments';
-// const mongoDB = 'mongodb://172.17.0.2/UpdatesAndComments';
+// const mongoDB = 'mongodb://localhost/updatecomments';
+
+//for docker
+// const mongoDB = 'mongodb://172.17.0.2/updatecomments';
+
+const mongoDB = 'mongodb://34.227.142.108:27017/updatecomments'
+
 mongoose.connect(mongoDB);
 
 const db = mongoose.connection;
@@ -12,7 +17,7 @@ db.once('open', () => {
 });
 
 const UpdateCommentSchema = new mongoose.Schema({
-  id: Number,
+  id: {type: Number , index:true},
   createdAt: Date,
   updates: [{
     title: String,
@@ -39,16 +44,67 @@ const UpdateCommentSchema = new mongoose.Schema({
 const UpdateComment = mongoose.model('UpdateComment', UpdateCommentSchema);
 
 const loadProject = (projectId, callback) => {
-  console.log('inside db load-', projectId)
+  console.log('inside db loadProject-', projectId)
   UpdateComment.find({id: projectId }, function(err, result) {
       if (err) {
-        console.log('errr in if-', err)
+        console.log('errr inside db if err-', err)
         callback(err, null);
         return;
     }
     callback(null, result);
-    //console.log('result in if-', result)
+    console.log('projects inside db loadProject method-', result)
     return;
     });
 };
+
+
+// const updatecomment = new Updatecomment({
+//   id: 1,
+//   createdAt: 2
+// });
+
+// Updatecomment.create(updatecomment, function(err, result) {
+//   if (err) {
+//     console.log('errr in saving-', err)
+//     return;
+// }
+//   console.log('saved -', result)
+
+//   return;
+// });
+
+// Updatecomment.find({id: 1}, function(err, result) {
+//   if (err) {
+//     console.log('errr in find-', err)
+//     return;
+// }
+//   console.log('result in find-', result)
+
+//   return;
+// });
+
+//var start = Date.now();
+
+// loadProject('1', (err, res) => {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     var delay = (Date.now() - start);
+//     console.log("res and delay-", res, delay)
+//   } 
+// });
+
+
+//module.exports.db = db;
+// // module.exports.UpdateComments = UpdateComments;
 module.exports.loadProject = loadProject;
+// module.exports.updateandcomment = updateandcomment;
+
+
+// db.UpdateComment.createIndex({id: 1},function(err, result) {
+//   if (err) {
+//     console.log('err during indexing-', err);
+//   } else {
+//     console.log('done indexing');
+//   }
+// });

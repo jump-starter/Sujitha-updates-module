@@ -3,26 +3,30 @@
   "version": "1.0.0",
   "description": "",
   "author": "",
-  "license": "",
+  "license": "ISC",
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
     "css": "node-sass client/src/styles.scss -o client/dist",
     "css:watch": "npm run css && node-sass client/src/styles.scss -wo client/dist",
-    "start": "node database/seed.js",
+    "db:seed": "node database/seed.js",
+    "start": "node server/server.js",
     "server": "nodemon server/server.js",
     "dev:react": "webpack -d --watch",
     "setdb": "node database/seed1.js",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "script": "grunt"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "bluebird": "^3.5.1",
     "body-parser": "^1.17.2",
+    "cluster": "^0.7.7",
     "cors": "^2.8.4",
+    "css-loader": "^0.28.11",
     "express": "^4.16.3",
     "faker": "^4.1.0",
     "jquery": "^3.3.1",
@@ -33,7 +37,8 @@
     "pg": "^7.4.1",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
-    "redis": "^2.8.0"
+    "redis": "^2.8.0",
+    "style-loader": "^0.21.0"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
@@ -45,7 +50,12 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.3",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "grunt": "^1.0.2",
+    "grunt-aws": "^0.6.2",
+    "grunt-browserify": "^5.3.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify": "^3.3.0",
+    "grunt-webpack": "^3.1.1",
     "jest": "^22.4.3",
     "loadtest": "^ 3.0.3",
     "node-sass": "^4.8.3",

@@ -1,14 +1,11 @@
 config:
-  target: 'http://127.0.0.1:3004'
+  target: 'http://ec2-34-207-242-26.compute-1.amazonaws.com'
   phases:
     - duration: 60
-      arrivalRate: 400
-  defaults:
-    headers:
-      x-my-service-auth: '987401838271002188298567'
+      arrivalRate: 10
 scenarios:
-  - name: "Project Details"
-    flow:
+  - flow:
+    - loop:
       - get:
-          url: "/project/12"
-          
+          url: "/api/updates/{{ $randomNumber(1,10000000) }}"
+      count: 5000

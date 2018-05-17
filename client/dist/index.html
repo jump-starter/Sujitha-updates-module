@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset='UTF-8'/>
     <title>notAirBnB</title>
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' data: fonts.googleapis.com;"> -->
+
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
 </head>
 
 <body>
     <div id="app"></div>
-    <script type="text/javascript" src="./bundle.js"></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script> 
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://s3.us-east-2.amazonaws.com/jumpstarter-static/bundle.js"></script>
     <script>
         //let locationId = (window.location.pathname.split('/rooms/')[1]).split('/')[0];
-        const project = window.location.href.split('/project/')[1].split('/')[0];
-        // console.log('inside html-', project)
+        let project = window.location.href.split('/project/')[1].split('/')[0];
+        console.log('inside html-', project)
         ReactDOM.render(
             React.createElement(App, {projectId: project}),
             document.getElementById('app')
